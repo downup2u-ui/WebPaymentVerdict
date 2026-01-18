@@ -1,0 +1,35 @@
+/* Hide footer for decision-focused layout */
+.md-footer {
+  display: none;
+}
+
+/* Fix sidebar scroll height after footer removal */
+.md-sidebar,
+.md-sidebar__scrollwrap {
+  height: 100vh;
+}
+
+.md-sidebar__scrollwrap {
+  overflow-y: auto;
+}
+
+/* Hide TOC when it has only one item */
+.md-sidebar--secondary .md-nav__list > li:only-child {
+  display: none;
+}
+
+.md-sidebar--secondary {
+  display: none;
+}
+
+/* Hide TOC sidebar when it has only one item */
+.md-sidebar--secondary
+  .md-nav__list
+  > .md-nav__item:only-child {
+  display: none;
+}
+
+/* If TOC list is effectively empty, hide entire sidebar */
+.md-sidebar--secondary {
+  display: none;
+}
