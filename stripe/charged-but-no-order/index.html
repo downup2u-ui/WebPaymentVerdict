@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://paymentverdict.com/problems/payment-timeout/">
+        <link rel="canonical" href="https://paymentverdict.com/stripe/charged-but-no-order/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Payment Timeout - Payment Verdict</title>
+        <title>Stripe Charged but No Order — Verdict - Payment Verdict</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#payment-timeout" class="md-skip">
+        <a href="#stripe-charged-but-no-order-verdict" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Payment Timeout
+              Stripe Charged but No Order — Verdict
             
           </span>
         </div>
@@ -277,7 +277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../problems/" class="md-nav__link">
         
   
   
@@ -305,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../payment-failed/" class="md-nav__link">
+      <a href="../../problems/payment-failed/" class="md-nav__link">
         
   
   
@@ -333,7 +333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../payment-pending-too-long/" class="md-nav__link">
+      <a href="../../problems/payment-pending-too-long/" class="md-nav__link">
         
   
   
@@ -361,7 +361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../payment-callback-not-received/" class="md-nav__link">
+      <a href="../../problems/payment-callback-not-received/" class="md-nav__link">
         
   
   
@@ -563,7 +563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../stripe/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -728,10 +728,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#situation" class="md-nav__link">
+  <a href="#incident-statement" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Situation
+        Incident statement
       
     </span>
   </a>
@@ -739,10 +739,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-this-is-not-a-normal-failure" class="md-nav__link">
+  <a href="#stripe-side-facts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why this is not a normal failure
+        Stripe-side facts
       
     </span>
   </a>
@@ -750,10 +750,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#risk-boundary" class="md-nav__link">
+  <a href="#why-this-situation-occurs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Risk boundary
+        Why this situation occurs
       
     </span>
   </a>
@@ -761,10 +761,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#judgment-note" class="md-nav__link">
+  <a href="#verdict" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Judgment note
+        Verdict
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verdict-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verdict usage
       
     </span>
   </a>
@@ -788,21 +799,54 @@
 
 
 
-<h1 id="payment-timeout">Payment Timeout<a class="headerlink" href="#payment-timeout" title="Permanent link">&para;</a></h1>
-<h2 id="situation">Situation<a class="headerlink" href="#situation" title="Permanent link">&para;</a></h2>
-<p>A payment execution enters a state where the system cannot
-clearly determine whether the action has completed successfully.</p>
-<h2 id="why-this-is-not-a-normal-failure">Why this is not a normal failure<a class="headerlink" href="#why-this-is-not-a-normal-failure" title="Permanent link">&para;</a></h2>
-<p>Payment systems may process requests asynchronously.
-Missing or delayed signals do not reliably indicate non-execution.</p>
-<h2 id="risk-boundary">Risk boundary<a class="headerlink" href="#risk-boundary" title="Permanent link">&para;</a></h2>
-<p>Continuing execution may introduce:
-- Duplicate charges
-- Conflicting transaction states
-- Improper responsibility transfer to automation</p>
-<h2 id="judgment-note">Judgment note<a class="headerlink" href="#judgment-note" title="Permanent link">&para;</a></h2>
-<p>When execution outcomes are irreversible,
-lack of confirmation is not sufficient justification to continue.</p>
+<h1 id="stripe-charged-but-no-order-verdict">Stripe Charged but No Order — Verdict<a class="headerlink" href="#stripe-charged-but-no-order-verdict" title="Permanent link">&para;</a></h1>
+<h2 id="incident-statement">Incident statement<a class="headerlink" href="#incident-statement" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>“The customer says they were charged, but no order was created.”</p>
+</blockquote>
+<p>This is one of the most common and disputed Stripe payment incidents.</p>
+<hr />
+<h2 id="stripe-side-facts">Stripe-side facts<a class="headerlink" href="#stripe-side-facts" title="Permanent link">&para;</a></h2>
+<p>In Stripe:</p>
+<ul>
+<li>A visible bank transaction does <strong>not always</strong> mean a completed charge</li>
+<li>Payment flows may include:</li>
+<li>Authorization holds</li>
+<li>Incomplete payment_intents</li>
+<li>Abandoned or expired payment attempts</li>
+</ul>
+<p>Only a <code>charge</code> linked to a <strong>successful payment_intent</strong>
+constitutes an actual completed payment.</p>
+<hr />
+<h2 id="why-this-situation-occurs">Why this situation occurs<a class="headerlink" href="#why-this-situation-occurs" title="Permanent link">&para;</a></h2>
+<p>Typical causes include:</p>
+<ul>
+<li>Customer closes the payment page during 3D Secure or confirmation</li>
+<li>Payment authorization is placed but later released</li>
+<li>The payment_intent expires without completion</li>
+<li>The merchant system only creates orders after confirmed success</li>
+</ul>
+<p>Banks may temporarily show a pending transaction,
+which is later reversed automatically.</p>
+<hr />
+<h2 id="verdict">Verdict<a class="headerlink" href="#verdict" title="Permanent link">&para;</a></h2>
+<ul>
+<li>⚠️ <strong>Pending or authorization entries are not completed charges</strong></li>
+<li>❌ <strong>No order is required</strong> if payment did not succeed</li>
+<li>❌ This is <strong>not evidence of money being captured</strong></li>
+<li>❌ This is <strong>not a webhook failure by default</strong></li>
+</ul>
+<p>In most cases, no funds are actually settled.</p>
+<hr />
+<h2 id="verdict-usage">Verdict usage<a class="headerlink" href="#verdict-usage" title="Permanent link">&para;</a></h2>
+<p>This verdict can be used to:</p>
+<ul>
+<li>Respond to customer claims calmly and factually</li>
+<li>Explain the situation to support or finance teams</li>
+<li>Provide a clear responsibility boundary</li>
+</ul>
+<p>If a precise Stripe-side timeline is required,
+a formal payment verdict can be generated for record alignment.</p>
 
 
 
